@@ -16,6 +16,8 @@ var server = function(){
         })
     }
 
+    self.app.use(express.static('public'));
+
 }
 
 util.inherits(server, eventEmitter);
