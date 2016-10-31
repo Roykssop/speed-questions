@@ -5,9 +5,15 @@ var router = express.Router();
 
 var route = function(server){
 
+    var model = require(__dirname + '/../models/questions')(server);
+
     router.get('/', function(req,res,next){
-        console.log("Llegamos aquí");
-        server.emit("mess");
+        model.get()
+             .then(function(data){
+                res.status(200).json(data);                
+             })
+             .catch(function(err){
+             });        
     });
 
     return router;
