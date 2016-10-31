@@ -18,8 +18,6 @@ var questions = function(server){
             })
         })    
     };
-    
-    return model;
 
 }
 

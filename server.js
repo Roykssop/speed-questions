@@ -10,10 +10,12 @@ var server = function(){
     self.app = app;
 
 
+
     self.start = function(){
-        self.app.listen(self.port, function(){
-            console.log('running');
-        })
+        self.instance = self.app.listen(self.port, function(){
+                                console.log('running');
+                            })
+        self.sockio =  require('socket.io')(self.instance);
     }
 
     self.app.use(express.static('public'));
