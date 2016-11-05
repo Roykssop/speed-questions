@@ -1,70 +1,45 @@
+<!DOCTYPE>
 <html>
 <head>
-    <title>Speed question</title>
-
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <title>Speed Questions</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="css/home.css">
 </head>
-<body ng-app="speedquestion">
-    <tableboard ng-controller="gameBoardCtrl">
-        <div class="line">
-            <div class="point step-1"></div>
-            <div class="point step-2"></div>
-            <div class="point step-3"></div>
-            <div class="point step-4"></div>
-            <div class="point step-5"></div>
-            <div class="point step-6"></div>
-            <div class="point step-7"></div>
-            <div class="point step-8"></div>
-            <div class="point step-9"></div>
-            <div class="point step-10"></div>
-        </div>
-        <div class="line">
-            <div class="point step-1"></div>
-            <div class="point step-2"></div>
-            <div class="point step-3"></div>
-            <div class="point step-4"></div>
-            <div class="point step-5"></div>
-            <div class="point step-6"></div>
-            <div class="point step-7"></div>
-            <div class="point step-8"></div>
-            <div class="point step-9"></div>
-            <div class="point step-10"></div>
-        </div>
-        <div class="line">
-            <div class="point step-1"></div>
-            <div class="point step-2"></div>
-            <div class="point step-3"></div>
-            <div class="point step-4"></div>
-            <div class="point step-5"></div>
-            <div class="point step-6"></div>
-            <div class="point step-7"></div>
-            <div class="point step-8"></div>
-            <div class="point step-9"></div>
-            <div class="point step-10"></div>
-        </div>
-        <div class="line">
-            <div class="point step-1"></div>
-            <div class="point step-2"></div>
-            <div class="point step-3"></div>
-            <div class="point step-4"></div>
-            <div class="point step-5"></div>
-            <div class="point step-6"></div>
-            <div class="point step-7"></div>
-            <div class="point step-8"></div>
-            <div class="point step-9"></div>
-            <div class="point step-10"></div>
-        </div>
-    </tableboard>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>  
-    <script src="services/socket.js"></script>
-    <script type="text/javascript">
-        var app = angular.module('speedquestion',['socketModule']);
-
-        app.controller('gameBoardCtrl', function($scope,socketio){
-            console.log($scope);
-        });
-    </script>
-
+<body ng-app="">
+    <div class="container">
+        <header>
+            <h1>Speed Questions!!</h1>
+        </header>
+        <section>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed enim molestias, consectetur aperiam similique atque quis excepturi nulla numquam quibusdam, ipsum reprehenderit eius sequi, dolorem voluptas qui maiores deleniti harum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed enim molestias, consectetur aperiam similique atque quis excepturi nulla numquam quibusdam, ipsum reprehenderit eius sequi, dolorem voluptas qui maiores deleniti harum.</p>
+            <div start>
+                <button class="main-button">Create a room</button>
+            </div>
+        </section>
+        <section>
+            <h3>Active Rooms</h3>
+            <div> 
+                <ul roomlist>
+                    <li><a href="#">Room 1</a></li>
+                    <li><a href="#">Room 1</a></li>
+                    <li><a href="#">Room 1</a></li>
+                    <li><a href="#">Room 1</a></li>
+                    <li><a href="#">Room 1</a></li>
+                    <li><a href="#">Room 1</a></li>
+                    <li><a href="#">Room 1</a></li>
+                    <li><a href="#">Room 1</a></li>   
+                    <li><a href="#">Room 1</a></li>
+                    <li><a href="#">Room 1</a></li>
+                    <li><a href="#">Room 1</a></li>
+                    <li><a href="#">Room 1</a></li>
+                    <li><a href="#">Room 1</a></li>
+                    <li><a href="#">Room 1</a></li>
+                    <li><a href="#">Room 1</a></li>
+                    <li><a href="#">Room 1</a></li>                                       
+                </ul>
+            </div>
+        </section>
+    </div>
 </body>
 </html>

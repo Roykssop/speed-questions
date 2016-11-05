@@ -1,0 +1,48 @@
+.container{
+    width:90%;
+    margin: auto;
+}
+
+section{
+    margin-bottom: 50px;
+}
+
+section p{
+    margin: 20px 20px 20px 20px; 
+}
+
+.container div[start] {
+    display: flex;
+    justify-content: center;
+}
+
+.container div ul[roomlist]{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    width: 80%;
+}
+.container div ul[roomlist] li{
+    margin: 10px;
+    background-color: #0099cc;
+    color: #FFF;
+    border-radius: 10px;    
+    padding: 20px;
+    text-align: center;
+}
+
+.container div ul[roomlist] li a{
+    color: #FFF;
+    text-decoration: none;
+}
+
+.main-button{
+    justify-content: center;
+    background-color: #0099cc;
+    color: #FFF;
+    font-weight: bold;
+    width: 400px;
+    height: 80px;
+    border-radius: 10px;
+}
