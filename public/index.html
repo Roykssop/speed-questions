@@ -5,8 +5,8 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" type="text/css" href="css/home.css">
 </head>
-<body ng-app="">
-    <div class="container">
+<body ng-app="speedquestion">
+    <div class="container" ng-controller="menuCtrl">
         <header>
             <h1>Speed Questions!!</h1>
         </header>
@@ -14,32 +14,43 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed enim molestias, consectetur aperiam similique atque quis excepturi nulla numquam quibusdam, ipsum reprehenderit eius sequi, dolorem voluptas qui maiores deleniti harum.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed enim molestias, consectetur aperiam similique atque quis excepturi nulla numquam quibusdam, ipsum reprehenderit eius sequi, dolorem voluptas qui maiores deleniti harum.</p>
             <div start>
-                <button class="main-button">Create a room</button>
+                <button class="main-button" ng-click="createRoom()">Create a room</button>
             </div>
         </section>
         <section>
             <h3>Active Rooms</h3>
             <div> 
                 <ul roomlist>
-                    <li><a href="#">Room 1</a></li>
-                    <li><a href="#">Room 1</a></li>
-                    <li><a href="#">Room 1</a></li>
-                    <li><a href="#">Room 1</a></li>
-                    <li><a href="#">Room 1</a></li>
-                    <li><a href="#">Room 1</a></li>
-                    <li><a href="#">Room 1</a></li>
-                    <li><a href="#">Room 1</a></li>   
-                    <li><a href="#">Room 1</a></li>
-                    <li><a href="#">Room 1</a></li>
-                    <li><a href="#">Room 1</a></li>
-                    <li><a href="#">Room 1</a></li>
-                    <li><a href="#">Room 1</a></li>
-                    <li><a href="#">Room 1</a></li>
-                    <li><a href="#">Room 1</a></li>
-                    <li><a href="#">Room 1</a></li>                                       
+                    <li ng-repeat="room in activeRooms"><a href="#">{{ room.name }}</a></li>                                       
                 </ul>
             </div>
         </section>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>  
+    <script src="services/socket.js"></script>
+    <script type="text/javascript">
+        var app = angular.module('speedquestion',['socketModule']);
+
+        app.controller('menuCtrl',function($scope){
+            var activeRooms = [];
+            $scope.activeRooms = activeRooms;
+
+            $scope.createRoom = function(){
+                var newRoom = {  name : 'Room' + activeRooms.length,
+                                 numPlayers : 1} ;
+
+                addRoom(newRoom);
+                
+                function addRoom(room){
+                    activeRooms.push(room);
+                }                                       
+            }
+        });
+
+        app.controller('gameBoardCtrl', function($scope,socketio){
+            console.log($scope);
+        });
+    </script>
 </body>
 </html>

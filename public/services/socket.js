@@ -5,8 +5,14 @@ app.service('socketio', function(){
     var socket = io.connect();
     
     self.on = function(eventName,cb){
-
+        socket.on(eventName,function(data){
+            
+        })
         //socket.on()
+    }
+
+    self.emit = function(eventName,cb){
+
     }
 
 });
