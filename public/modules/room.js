@@ -1,16 +1,16 @@
     angular
-        .module('room',[players])
+        .module('room',[])
         .factory('$room', Factory)
 
     /** @ngInject */
-    function Factory($q,$http){
+    function Factory($q,$http,socketio){
 
         return {
             getInstance: fn
         }
 
         function fn(){
-            var status, maxPlayers, maxQuestions, missedPoints;
+            var status, name, maxPlayers, maxQuestions, missedPoints;
 
             function checkStatus(){
                 if (players.length == maxPlayers)
@@ -47,11 +47,16 @@
                     setMaxPlayers(oNewRoom.maxPlayers);
                     setName(oNewRoom.name);
                     setMaxQuestions(oNewRoom.maxQuestions);
+
+                    socketio.emit("AddRoom",this.getName());
                 },
                 countPlayers : function(){},
                 statusRoom : function(){
                     return checkStatus();
-                } 
+                } ,
+                getName : function(){
+                    return name;
+                }
             }
 
         }

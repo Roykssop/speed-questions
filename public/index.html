@@ -21,30 +21,38 @@
             <h3>Active Rooms</h3>
             <div> 
                 <ul roomlist>
-                    <li ng-repeat="room in activeRooms"><a href="#">{{ room.name }}</a></li>                                       
+                    <li ng-repeat="room in activeRooms"><a href="#">{{ room.getName() }}</a></li>                                       
                 </ul>
             </div>
         </section>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>  
-    <script src="modules/player.js"></script>
+    <script src="modules/game.js"></script>
+    <script src="modules/room.js"></script>    
+    <script src="modules/player.js"></script> 
     <script src="modules/socket.js"></script>
     <script type="text/javascript">
-        var app = angular.module('speedquestion',['socketModule']);
+        var app = angular.module('speedquestion',['socketModule','gameManager','socketModule']);
 
-        app.controller('menuCtrl',function($scope){
+        app.controller('menuCtrl',function($scope,$game,socketio){
             var activeRooms = [];
             $scope.activeRooms = activeRooms;
 
             $scope.createRoom = function(){
-                var newRoom = {  name : 'Room' + activeRooms.length,
-                                 numPlayers : 1} ;
+                var newRoom = {  name : 'Room' + $scope.activeRooms.length,
+                                 maxPlayers : 4,
+                                 maxQuestions : 10} ;
+
+                console.log(newRoom);
 
                 addRoom(newRoom);
                 
                 function addRoom(room){
-                    activeRooms.push(room);
+                    socketio.emit("AddRoom","Se agrego una room");
+                    $game.start(room);
+                    console.log($game.getRooms());
+                    $scope.activeRooms = $game.getRooms();
                 }                                       
             }
         });

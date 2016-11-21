@@ -1,6 +1,6 @@
-var module = angular.module('gameManager',['room']);
+var module = angular.module('gameManager',['room','socketModule','player']);
 
-module.service('game', function($room){
+module.service('$game', function($room){
     var self = this;
     var maxPlayers = 4;
     var maxQuestions = 10;
@@ -8,15 +8,30 @@ module.service('game', function($room){
     var players = [];
     var rooms = [];
     var roomi;
+    var playeri;
 
     self.start = function(oConstruct){
-        var roomi = $room.getInstance();
+        roomi = $room.getInstance();
+        self.addRoom(oConstruct);
     }
 
     self.addRoom = function(oRoom){
         roomi.create(oRoom);
-        
-    }    
+        rooms.push(roomi);  
+        console.log(rooms);    
+    }  
+
+    self.countRooms =  function(){
+        return rooms.length;
+    }  
+
+    self.getRooms = function(){
+        return rooms;
+    }
+
+    self.initNamespace = function(){
+
+    }
 
 
 
