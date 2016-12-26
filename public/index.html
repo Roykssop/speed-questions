@@ -38,6 +38,7 @@
         app.controller('menuCtrl',function($scope,$game,socketio){
             var activeRooms = [];
             $scope.activeRooms = activeRooms;
+            console.log(socketio);  
 
             $scope.createRoom = function(){
                 var newRoom = {  name : 'Room' + $scope.activeRooms.length,
@@ -47,9 +48,11 @@
                 console.log(newRoom);
 
                 addRoom(newRoom);
+              
                 
                 function addRoom(room){
-                    socketio.emit("AddRoom","Se agrego una room");
+
+                    socketio.emit("AddRoom",newRoom.name);
                     $game.start(room);
                     console.log($game.getRooms());
                     $scope.activeRooms = $game.getRooms();

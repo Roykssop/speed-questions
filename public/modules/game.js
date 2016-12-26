@@ -1,6 +1,8 @@
-var module = angular.module('gameManager',['room','socketModule','player']);
+var app = angular.module('gameManager',['room','socketModule','player']);
 
-module.service('$game', function($room){
+app.value('baseApi','http://localhost:3000/api/');
+
+app.service('$game', function($room,$http,baseApi){
     var self = this;
     var maxPlayers = 4;
     var maxQuestions = 10;
@@ -27,6 +29,15 @@ module.service('$game', function($room){
 
     self.getRooms = function(){
         return rooms;
+    }
+
+    self.loadRoomsServer = function(){
+        $http.get( baseApi + 'game/rooms')
+             .then(function(res){
+                 rooms = res.data;
+             },function(err){
+                 alert('Cannot load rooms');
+             });
     }
 
     self.initNamespace = function(){

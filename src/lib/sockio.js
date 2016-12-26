@@ -9,7 +9,7 @@ var sockio = function(server){
         })
 
         socket.on('AddRoom', function(ret){
-            console.log(ret);
+            socket.join(ret);
         });
     });
 }

@@ -6,12 +6,17 @@ var eventEmitter = require('events');
 
 var server = function(){
     self = this;
-    self.port = 80;
+    self.port = 3000;
     self.app = app;
 
 
 
-    self.start = function(){
+    self.start = function(config){
+        for (var key in config){
+            if (self[key])
+                self[key] = config[key];
+        }
+
         self.instance = self.app.listen(self.port, function(){
                                 console.log('running');
                             })
