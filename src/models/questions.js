@@ -19,6 +19,7 @@ var questions = function(server){
         })    
     };
 
+    return model;
 }
 
 module.exports = questions;

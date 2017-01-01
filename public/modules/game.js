@@ -20,7 +20,7 @@ app.service('$game', function($room,$http,baseApi){
     self.addRoom = function(oRoom){
         roomi.create(oRoom);
         rooms.push(roomi);  
-        console.log(rooms);    
+        self.pushRoomServer(roomi)
     }  
 
     self.countRooms =  function(){
@@ -37,6 +37,17 @@ app.service('$game', function($room,$http,baseApi){
                  rooms = res.data;
              },function(err){
                  alert('Cannot load rooms');
+             });
+    }
+
+    self.pushRoomServer = function(room){
+        console.log(room);
+        console.log({ flauta : "traversa", canon : "borracho"});
+        $http.post( baseApi + 'game/rooms',angular.toJson(room))
+             .then(function(res){
+                 console.log("holis");
+             },function(err){
+                 alert('Cannot push rooms');
              });
     }
 

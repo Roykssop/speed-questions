@@ -1,16 +1,19 @@
 
-var game = function(){
-    var self = this;
+var game = function(server){
+    var model = this;
     var rooms = [];
 
-    self.getRooms = function(){
+    model.getRooms = function(){
         return rooms;
     }
 
-    self.addRooms = function(room){
+    model.addRooms = function(room){
         rooms.push(room);
+        console.log(rooms);
     }
+
+    return model;
 }
 
 
-return game;
+module.exports = game;

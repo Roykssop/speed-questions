@@ -12,7 +12,7 @@ var getRouter =  function(server){
         return res.status(200).json(model.getRooms());      
     });
 
-    router.post('/rooms',function(req,res,next){
+    router.post('/rooms',jsonParser,function(req,res,next){
         console.log(req.body);
         return res.status(201).json(model.addRooms(req.body))        
     })
